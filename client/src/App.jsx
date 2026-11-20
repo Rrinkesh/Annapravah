@@ -19,7 +19,7 @@ function App() {
       <Footer />
       
       {/* Global Floating WhatsApp Contact */}
-      <WhatsAppButton phoneNumber="919027348898" message="Hello RePlate Admin, I need some assistance." />
+      <WhatsAppButton phoneNumber="919027348898" message="Hello Annapravah Admin, I need some assistance." />
     </div>
   );
 }

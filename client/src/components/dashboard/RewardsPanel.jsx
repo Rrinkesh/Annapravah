@@ -13,7 +13,7 @@ const RewardsPanel = ({ userRole, credits, level }) => {
     { title: "Featured Placement", credits: 500, desc: "Get promoted on the main page for 7 days.", code: "FEATURED_PLACEMENT" }
   ] : [
     { title: "Verified NGO", credits: 100, desc: "Priority in auto-escalations." },
-    { title: "Fundraising Campaign", credits: 1000, desc: "Start a fundraising campaign on RePlate.", code: "FUNDRAISING_CAMPAIGN" }
+    { title: "Fundraising Campaign", credits: 1000, desc: "Start a fundraising campaign on Annapravah.", code: "FUNDRAISING_CAMPAIGN" }
   ];
 
   const handleRequest = async () => {

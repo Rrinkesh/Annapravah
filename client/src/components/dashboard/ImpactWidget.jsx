@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import { Star, ShieldCheck, Trophy, Target, TrendingUp } from "lucide-react";
 import { Card, Badge, LoadingSpinner, ErrorState } from "../common";
 import impactService from "../../services/impactService";
 
 const RewardLevelBadge = ({ level }) => {
   const levelConfig = {
-    REPLATE_CHAMPION: { color: "bg-amber-100 text-amber-700 border-amber-200", icon: Trophy, label: "RePlate Champion" },
+    ANNAPRAVAH_CHAMPION: { color: "bg-amber-100 text-amber-700 border-amber-200", icon: Trophy, label: "Annapravah Champion" },
     FOOD_RESCUE_PARTNER: { color: "bg-purple-100 text-purple-700 border-purple-200", icon: Star, label: "Food Rescue Partner" },
     COMMUNITY_PARTNER: { color: "bg-blue-100 text-blue-700 border-blue-200", icon: ShieldCheck, label: "Community Partner" },
     NEW: { color: "bg-charcoal-100 text-charcoal-600 border-charcoal-200", icon: Target, label: "New Member" }

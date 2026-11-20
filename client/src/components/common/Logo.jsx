@@ -51,7 +51,7 @@ const Logo = ({ size = "md", showTagline = false, className = "" }) => {
           <span
             className={`font-black tracking-tight text-charcoal-900 ${textSizes[size]}`}
           >
-            RePlate
+            Annapravah
           </span>
           <span className="w-2 h-2 rounded-full bg-brand-500 animate-pulse" />
         </div>

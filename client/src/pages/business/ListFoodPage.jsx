@@ -417,7 +417,7 @@ const ListFoodPage = () => {
         subtitle={
           editFood
             ? "Your food surplus details have been updated."
-            : "Your food surplus is now live on the RePlate Marketplace."
+            : "Your food surplus is now live on the Annapravah Marketplace."
         }
         footer={
           <>

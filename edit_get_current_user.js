@@ -7,7 +7,7 @@ const searchBlock = `    if (!user) {
       user = await User.create({
         firebaseUid,
         email,
-        name: req.user.name || "RePlate User",
+        name: req.user.name || "Annapravah User",
         role: isSuperAdmin ? "ADMIN" : "BUSINESS",
         isVerified: isSuperAdmin ? true : false,
       });

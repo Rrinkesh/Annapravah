@@ -111,7 +111,7 @@ const LoginPage = () => {
             Welcome Back
           </Card.Title>
           <Card.Description className="mt-1">
-            Sign in to access your RePlate partner dashboard
+            Sign in to access your Annapravah partner dashboard
           </Card.Description>
         </Card.Header>
 

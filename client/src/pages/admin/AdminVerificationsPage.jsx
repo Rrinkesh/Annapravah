@@ -187,14 +187,35 @@ const AdminVerificationsPage = () => {
                         {bus.address}
                       </p>
 
-                      <div className="mt-3 flex gap-2">
-                        {bus.fssaiLicense && (
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {bus.businessType === 'PARTY' ? (
+                          bus.registrationNumber && (
+                            <Badge
+                              variant="outline"
+                              size="sm"
+                              className="bg-amber-50 border-amber-200 text-amber-800"
+                            >
+                              Govt ID (Aadhaar/PAN): {bus.registrationNumber}
+                            </Badge>
+                          )
+                        ) : (
+                          bus.fssaiLicense && (
+                            <Badge
+                              variant="outline"
+                              size="sm"
+                              className="bg-surface-50"
+                            >
+                              FSSAI: {bus.fssaiLicense}
+                            </Badge>
+                          )
+                        )}
+                        {bus.registrationNumber && bus.businessType !== 'PARTY' && (
                           <Badge
                             variant="outline"
                             size="sm"
                             className="bg-surface-50"
                           >
-                            FSSAI: {bus.fssaiLicense}
+                            Reg: {bus.registrationNumber}
                           </Badge>
                         )}
                         <Badge
@@ -204,6 +225,16 @@ const AdminVerificationsPage = () => {
                         >
                           {bus.phone}
                         </Badge>
+                        {bus.businessType === 'PARTY' && bus.eventCardImage && (
+                          <a
+                            href={bus.eventCardImage}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 border border-blue-200 text-blue-700 hover:bg-blue-100 transition-colors"
+                          >
+                            View Event Card &#x2197;
+                          </a>
+                        )}
                       </div>
                     </div>
 

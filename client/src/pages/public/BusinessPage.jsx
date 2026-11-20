@@ -7,7 +7,7 @@ const BusinessPage = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <PageHeader
-        title="RePlate for Food Businesses"
+        title="Annapravah for Food Businesses"
         subtitle="Empowering hotels, restaurants, bakeries, and cloud kitchens to turn food surplus into verified community impact."
         actions={
           <Link to="/signup">
@@ -41,7 +41,7 @@ const BusinessPage = () => {
           <Award className="w-8 h-8 text-brand-600 mb-4" />
           <Card.Title>Zero Waste Certification</Card.Title>
           <Card.Description>
-            Earn RePlate Sustainable Partner badges for public brand
+            Earn Annapravah Sustainable Partner badges for public brand
             recognition.
           </Card.Description>
         </Card>

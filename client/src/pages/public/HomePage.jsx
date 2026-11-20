@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import { Link } from "react-router-dom";
 import {
   Utensils,
@@ -60,7 +60,7 @@ const howItWorksSteps = [
   },
   {
     step: "02",
-    title: "RePlate Finds a Match",
+    title: "Annapravah Finds a Match",
     desc: "Intelligent routing instantly alerts verified recipient NGOs within a 5km radius.",
     icon: Zap,
   },
@@ -226,7 +226,7 @@ const HomePage = () => {
                   <div className="p-2.5 sm:p-3 bg-brand-600 text-white rounded-2xl shadow-soft-sm">
                     <Utensils className="w-5 h-5 mx-auto mb-1" />
                     <p className="text-[10px] sm:text-[11px] font-bold">
-                      RePlate
+                      Annapravah
                     </p>
                   </div>
 
@@ -315,7 +315,7 @@ const HomePage = () => {
             Simplicity First
           </Badge>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-charcoal-900 tracking-tight">
-            How RePlate Recovers Food
+            How Annapravah Recovers Food
           </h2>
           <p className="text-charcoal-600 mt-2 text-xs sm:text-base">
             From surplus identification to recipient distribution in 4 seamless
@@ -463,7 +463,7 @@ const HomePage = () => {
               </div>
 
               <h2 className="text-2xl sm:text-4xl font-extrabold text-charcoal-900 tracking-tight">
-                RePlate learns before food becomes waste.
+                Annapravah learns before food becomes waste.
               </h2>
 
               <p className="text-charcoal-600 text-xs sm:text-sm leading-relaxed max-w-lg mx-auto lg:mx-0">

@@ -3,7 +3,7 @@ import { CheckCircle2, ArrowRight } from "lucide-react";
 import Button from "./Button";
 
 const SuccessState = ({
-  title = "Food successfully listed on RePlate.",
+  title = "Food successfully listed on Annapravah.",
   message = "Your surplus posting is now live. Verified recipient NGOs near you are being notified.",
   actionLabel,
   onAction,

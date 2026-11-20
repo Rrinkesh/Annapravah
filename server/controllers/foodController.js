@@ -1,4 +1,4 @@
-const Food = require("../models/Food");
+﻿const Food = require("../models/Food");
 const User = require("../models/User");
 const { calculateFoodStatus } = require("../services/foodStatusService");
 
@@ -15,7 +15,7 @@ const getAuthenticatedMongoUser = async (req) => {
     // Sync fallback user if missing
     mongoUser = await User.create({
       firebaseUid,
-      email: req.user.email || "partner@replate.org",
+      email: req.user.email || "partner@annapravah.org",
       name: req.user.name || "Business Partner",
       role: "BUSINESS",
     });

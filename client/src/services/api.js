@@ -1,4 +1,4 @@
-import axios from "axios";
+﻿import axios from "axios";
 import { auth } from "../config/firebase";
 
 const resolveApiBaseUrl = () => {
@@ -37,7 +37,7 @@ api.interceptors.request.use(
       }
 
       // Fallback check if user is stored in localStorage
-      const savedUserStr = localStorage.getItem("replate_current_user");
+      const savedUserStr = localStorage.getItem("annapravah_current_user");
       if (savedUserStr) {
         const savedUser = JSON.parse(savedUserStr);
         if (savedUser && savedUser.uid) {
@@ -45,7 +45,7 @@ api.interceptors.request.use(
         }
       }
     } catch (error) {
-      const savedUserStr = localStorage.getItem("replate_current_user");
+      const savedUserStr = localStorage.getItem("annapravah_current_user");
       if (savedUserStr) {
         try {
           const savedUser = JSON.parse(savedUserStr);

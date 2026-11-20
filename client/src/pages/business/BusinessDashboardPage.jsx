@@ -546,7 +546,7 @@ const BusinessDashboardPage = () => {
                 </div>
                 <div className="p-3 bg-surface-50 rounded-xl flex justify-between items-center">
                   <span className="text-charcoal-600 font-medium">
-                    RePlate Star Rating:
+                    Annapravah Star Rating:
                   </span>
                   <span className="font-bold text-amber-600">
                     ★ 4.9 Zero Waste

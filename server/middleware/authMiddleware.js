@@ -1,4 +1,4 @@
-const admin = require("../config/firebaseAdmin");
+﻿const admin = require("../config/firebaseAdmin");
 
 const protect = async (req, res, next) => {
   let token;
@@ -24,8 +24,8 @@ const protect = async (req, res, next) => {
         // Generate pseudo-unique email for dev tokens to prevent E11000 dup key errors
         const devEmail =
           token.length < 20
-            ? `${token}@replate.org`
-            : "dev.partner@replate.org";
+            ? `${token}@annapravah.org`
+            : "dev.partner@annapravah.org";
         req.user = {
           uid: token,
           firebaseUid: token,
@@ -58,7 +58,7 @@ const protect = async (req, res, next) => {
             req.user = {
               uid: token,
               firebaseUid: token,
-              email: `fallback-${token.slice(0, 10)}@replate.org`,
+              email: `fallback-${token.slice(0, 10)}@annapravah.org`,
               name: "Fallback User",
             };
             return next();
@@ -73,7 +73,7 @@ const protect = async (req, res, next) => {
           req.user = {
             uid: payload.user_id || token,
             firebaseUid: payload.user_id || token,
-            email: payload.email || "dev.user@replate.org",
+            email: payload.email || "dev.user@annapravah.org",
             name: payload.name || payload.email?.split("@")[0] || "Dev User",
           };
           return next();

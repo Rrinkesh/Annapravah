@@ -1,7 +1,7 @@
-{
+﻿{
   "name": "replate-server",
   "version": "1.0.0",
-  "description": "RePlate Backend API - Food-surplus management and recovery platform",
+  "description": "Annapravah Backend API - Food-surplus management and recovery platform",
   "main": "server.js",
   "type": "commonjs",
   "scripts": {
@@ -9,7 +9,7 @@
     "dev": "nodemon server.js"
   },
   "keywords": [
-    "replate",
+    "annapravah",
     "express",
     "mongoose",
     "food-surplus"
@@ -21,7 +21,10 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^8.7.5",
     "firebase-admin": "^13.1.0",
+    "helmet": "^8.3.0",
     "mongoose": "^8.10.1",
     "multer": "^2.4.0"
   },

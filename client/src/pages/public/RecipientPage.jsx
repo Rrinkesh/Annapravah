@@ -7,7 +7,7 @@ const RecipientPage = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <PageHeader
-        title="RePlate for Recipient Organizations"
+        title="Annapravah for Recipient Organizations"
         subtitle="Connecting verified NGOs, community kitchens, and shelters with reliable food surplus."
         actions={
           <Link to="/signup">

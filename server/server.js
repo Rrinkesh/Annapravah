@@ -64,7 +64,7 @@ app.use("/api/uploads", uploadRoutes);
 app.get("/", (req, res) => {
   res.status(200).json({
     success: true,
-    message: "Welcome to RePlate API Platform",
+    message: "Welcome to Annapravah API Platform",
     tagline: "Good food deserves another plate.",
   });
 });
@@ -75,7 +75,7 @@ app.use(errorHandler);
 
 // Start Express Server
 app.listen(PORT, "0.0.0.0", () => {
-  console.log(`RePlate Express Server running on port ${PORT}`);
+  console.log(`Annapravah Express Server running on port ${PORT}`);
   // Start food status & expiry monitor background job
   startExpiryBackgroundJob();
   startEscalationJob();

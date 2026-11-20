@@ -1,9 +1,9 @@
-<<<<<<< HEAD
-# RePlate — Food-Surplus Management & Recovery Platform
+﻿<<<<<<< HEAD
+# Annapravah — Food-Surplus Management & Recovery Platform
 
 > **"Good food deserves another plate."**
 
-RePlate is a modern, premium SaaS food-surplus management and recovery platform designed for commercial kitchens, hotels, restaurants, bakeries, cloud kitchens, and verified recipient NGOs in Noida and Delhi NCR.
+Annapravah is a modern, premium SaaS food-surplus management and recovery platform designed for commercial kitchens, hotels, restaurants, bakeries, cloud kitchens, and verified recipient NGOs in Noida and Delhi NCR.
 
 ---
 
@@ -37,7 +37,7 @@ RePlate is a modern, premium SaaS food-surplus management and recovery platform 
 ## 📁 Directory Structure
 
 ```text
-replate/
+annapravah/
 ├── client/                      # React + Vite Frontend
 │   ├── public/                  # Static assets & favicons
 │   ├── src/
@@ -96,7 +96,7 @@ VITE_FIREBASE_APP_ID=your_app_id
 
 ### Server Environment Template (`server/.env.example`)
 ```env
-MONGODB_URI=mongodb+srv://user:password@cluster.mongodb.net/replate?retryWrites=true&w=majority
+MONGODB_URI=mongodb+srv://user:password@cluster.mongodb.net/annapravah?retryWrites=true&w=majority
 PORT=5000
 FIREBASE_PROJECT_ID=your_project_id
 FIREBASE_CLIENT_EMAIL=firebase-adminsdk-fbsvc@your_project.iam.gserviceaccount.com
@@ -156,7 +156,7 @@ To verify server operation and connection status:
 ```json
 {
   "success": true,
-  "message": "RePlate API is running"
+  "message": "Annapravah API is running"
 }
 ```
 
@@ -167,7 +167,7 @@ To verify server operation and connection status:
 | Route Path | Description | Access Level |
 | :--- | :--- | :--- |
 | `/` | Premium Startup Landing Page | Public |
-| `/how-it-works` | How RePlate Works Timeline | Public |
+| `/how-it-works` | How Annapravah Works Timeline | Public |
 | `/business` | Commercial Donor Information | Public |
 | `/recipient` | Recipient NGO Information | Public |
 | `/impact` | Sustainability & ESG Impact Metrics | Public |
@@ -186,7 +186,7 @@ To verify server operation and connection status:
 ---
 
 ## 📜 License
-Copyright © 2026 RePlate. All rights reserved.
+Copyright © 2026 Annapravah. All rights reserved.
 =======
-# Replate
+# Annapravah
 >>>>>>> f7d1ffe967e0d7ca3af73fd87983eb59d620408b

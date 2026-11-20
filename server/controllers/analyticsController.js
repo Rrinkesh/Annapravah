@@ -1,4 +1,4 @@
-const Food = require("../models/Food");
+﻿const Food = require("../models/Food");
 const Reservation = require("../models/Reservation");
 const BusinessProfile = require("../models/BusinessProfile");
 const RecipientProfile = require("../models/RecipientProfile");
@@ -15,8 +15,8 @@ const getAuthenticatedUser = async (req) => {
   if (!mongoUser) {
     mongoUser = await User.create({
       firebaseUid,
-      email: req.user.email || "user@replate.org",
-      name: req.user.name || "RePlate User",
+      email: req.user.email || "user@annapravah.org",
+      name: req.user.name || "Annapravah User",
       role: "RECIPIENT",
     });
   }

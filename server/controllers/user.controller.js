@@ -1,4 +1,4 @@
-const User = require("../models/User");
+﻿const User = require("../models/User");
 const BusinessProfile = require("../models/BusinessProfile");
 const RecipientProfile = require("../models/RecipientProfile");
 
@@ -13,7 +13,7 @@ const getCurrentUser = async (req, res, next) => {
 
     let user = await User.findOne({ firebaseUid });
 
-    const email = req.user.email || user?.email || "user@replate.org";
+    const email = req.user.email || user?.email || "user@annapravah.org";
     const isSuperAdmin =
       process.env.SUPER_ADMIN_EMAIL &&
       email.toLowerCase() ===
@@ -114,8 +114,8 @@ const syncUser = async (req, res, next) => {
       // Create new MongoDB user profile
       user = await User.create({
         firebaseUid,
-        email: email || "user@replate.org",
-        name: name || req.user?.name || "RePlate Partner",
+        email: email || "user@annapravah.org",
+        name: name || req.user?.name || "Annapravah Partner",
         role: finalRole,
         recipientType: finalRole === "RECIPIENT" ? (recipientType || "NGO") : undefined,
         businessType: finalRole === "BUSINESS" ? (businessType || "RESTAURANT") : undefined,

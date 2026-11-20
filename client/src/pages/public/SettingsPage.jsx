@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import {
   User,
   Bell,
@@ -114,7 +114,7 @@ const SettingsPage = () => {
                   Primary Email Address
                 </p>
                 <p className="text-charcoal-600 mt-0.5">
-                  {currentUser?.email || "partner@replate.org"}
+                  {currentUser?.email || "partner@annapravah.org"}
                 </p>
               </div>
               <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-bold self-start sm:self-auto">
@@ -229,7 +229,7 @@ const SettingsPage = () => {
                 3. Privacy & Directory Controls
               </Card.Title>
               <Card.Description>
-                Manage organization visibility across the RePlate network
+                Manage organization visibility across the Annapravah network
               </Card.Description>
             </div>
           </div>

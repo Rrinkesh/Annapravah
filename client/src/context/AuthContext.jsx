@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+﻿import React, { createContext, useContext, useState, useEffect } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
   // Initialize currentUser from localStorage persistence so page refreshes retain session
   const [currentUser, setCurrentUser] = useState(() => {
     try {
-      const savedUser = localStorage.getItem("replate_current_user");
+      const savedUser = localStorage.getItem("annapravah_current_user");
       return savedUser ? JSON.parse(savedUser) : null;
     } catch (e) {
       return null;
@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
 
   const [mongoUser, setMongoUser] = useState(null);
   const [userRole, setUserRole] = useState(
-    () => localStorage.getItem("replate_user_role") || "business",
+    () => localStorage.getItem("annapravah_user_role") || "business",
   );
   const [loading, setLoading] = useState(true);
 
@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }) => {
       };
       setCurrentUser(sanitizedUser);
       localStorage.setItem(
-        "replate_current_user",
+        "annapravah_current_user",
         JSON.stringify(sanitizedUser),
       );
     }
@@ -77,7 +77,7 @@ export const AuthProvider = ({ children }) => {
       if (res.success && res.data) {
         setMongoUser(res.data);
         const syncedRole = res.data.role.toLowerCase();
-        localStorage.setItem("replate_user_role", syncedRole);
+        localStorage.setItem("annapravah_user_role", syncedRole);
         setUserRole(syncedRole);
       }
     } catch (err) {
@@ -97,7 +97,7 @@ export const AuthProvider = ({ children }) => {
       let user;
       // Set a flag so onAuthStateChanged knows not to call getCurrentUserProfile
       // while we are mid-signup (race condition guard)
-      sessionStorage.setItem("replate_signup_in_progress", "1");
+      sessionStorage.setItem("annapravah_signup_in_progress", "1");
       try {
         const userCredential = await createUserWithEmailAndPassword(
           auth,
@@ -123,19 +123,19 @@ export const AuthProvider = ({ children }) => {
             displayName: displayName || email.split("@")[0],
           };
         } else {
-          sessionStorage.removeItem("replate_signup_in_progress");
+          sessionStorage.removeItem("annapravah_signup_in_progress");
           throw fbErr;
         }
       }
 
       saveUserSession(user);
-      localStorage.setItem("replate_user_role", role);
+      localStorage.setItem("annapravah_user_role", role);
       setUserRole(role);
       await syncWithMongoDB(user, role, { name: displayName, ...extraData }, true);
-      sessionStorage.removeItem("replate_signup_in_progress");
+      sessionStorage.removeItem("annapravah_signup_in_progress");
       return user;
     } catch (error) {
-      sessionStorage.removeItem("replate_signup_in_progress");
+      sessionStorage.removeItem("annapravah_signup_in_progress");
       console.error("Firebase Signup Error:", error);
       throw error;
     }
@@ -180,7 +180,7 @@ export const AuthProvider = ({ children }) => {
           setMongoUser(profileRes.data);
           const mRole = profileRes.data.role.toLowerCase();
           setUserRole(mRole);
-          localStorage.setItem("replate_user_role", mRole);
+          localStorage.setItem("annapravah_user_role", mRole);
         } else {
           await syncWithMongoDB(user, userRole);
         }
@@ -213,7 +213,7 @@ export const AuthProvider = ({ children }) => {
           );
           user = {
             uid: `dev-google-user-${Date.now()}`,
-            email: "google.partner@replate.org",
+            email: "google.partner@annapravah.org",
             displayName: "Google Partner User",
           };
         } else {
@@ -229,10 +229,10 @@ export const AuthProvider = ({ children }) => {
           setMongoUser(profileRes.data);
           const mRole = profileRes.data.role.toLowerCase();
           setUserRole(mRole);
-          localStorage.setItem("replate_user_role", mRole);
+          localStorage.setItem("annapravah_user_role", mRole);
         } else {
           const role = requestedRole || userRole || "business";
-          localStorage.setItem("replate_user_role", role);
+          localStorage.setItem("annapravah_user_role", role);
           setUserRole(role);
           await syncWithMongoDB(user, role, extraData);
         }
@@ -253,8 +253,8 @@ export const AuthProvider = ({ children }) => {
     try {
       await signOut(auth).catch(() => {});
     } finally {
-      localStorage.removeItem("replate_user_role");
-      localStorage.removeItem("replate_current_user");
+      localStorage.removeItem("annapravah_user_role");
+      localStorage.removeItem("annapravah_current_user");
       setCurrentUser(null);
       setMongoUser(null);
       setUserRole("business"); // Reset to default
@@ -273,7 +273,7 @@ export const AuthProvider = ({ children }) => {
 
   // Update user role state manually
   const switchRole = (role) => {
-    localStorage.setItem("replate_user_role", role);
+    localStorage.setItem("annapravah_user_role", role);
     setUserRole(role);
   };
 
@@ -286,7 +286,7 @@ export const AuthProvider = ({ children }) => {
           saveUserSession(user);
         } else {
           // If Firebase SDK returns null (dev mode or unconfigured SDK), check localStorage session fallback
-          const savedUser = localStorage.getItem("replate_current_user");
+          const savedUser = localStorage.getItem("annapravah_current_user");
           if (savedUser) {
             try {
               setCurrentUser(JSON.parse(savedUser));
@@ -299,17 +299,17 @@ export const AuthProvider = ({ children }) => {
         }
 
         const savedRole =
-          localStorage.getItem("replate_user_role") || "business";
+          localStorage.getItem("annapravah_user_role") || "business";
         setUserRole(savedRole);
 
         const activeUser =
           user ||
-          (localStorage.getItem("replate_current_user")
-            ? JSON.parse(localStorage.getItem("replate_current_user"))
+          (localStorage.getItem("annapravah_current_user")
+            ? JSON.parse(localStorage.getItem("annapravah_current_user"))
             : null);
 
         // Skip profile fetch if signup is in progress — syncWithMongoDB will handle it
-        const signupInProgress = sessionStorage.getItem("replate_signup_in_progress") === "1";
+        const signupInProgress = sessionStorage.getItem("annapravah_signup_in_progress") === "1";
 
         if (activeUser && !signupInProgress) {
           try {
@@ -318,13 +318,13 @@ export const AuthProvider = ({ children }) => {
               setMongoUser(profileRes.data);
               const mRole = profileRes.data.role.toLowerCase();
               setUserRole(mRole);
-              localStorage.setItem("replate_user_role", mRole);
+              localStorage.setItem("annapravah_user_role", mRole);
             }
           } catch (e) {
             if (e.response?.status === 401 || e.message?.includes("401")) {
               await signOut(auth).catch(() => {});
-              localStorage.removeItem("replate_current_user");
-              localStorage.removeItem("replate_user_role");
+              localStorage.removeItem("annapravah_current_user");
+              localStorage.removeItem("annapravah_user_role");
               setCurrentUser(null);
               setMongoUser(null);
             }
@@ -335,7 +335,7 @@ export const AuthProvider = ({ children }) => {
       },
       (error) => {
         console.warn("Firebase Auth State listener fallback:", error.message);
-        const savedUser = localStorage.getItem("replate_current_user");
+        const savedUser = localStorage.getItem("annapravah_current_user");
         if (savedUser) {
           try {
             setCurrentUser(JSON.parse(savedUser));

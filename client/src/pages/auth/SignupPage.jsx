@@ -12,6 +12,7 @@ import {
   MapPin,
   LocateFixed,
   Loader2,
+  CreditCard,
 } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 import { Card, Input, Button, ImageUploader } from "../../components/common";
@@ -96,6 +97,20 @@ const SignupPage = () => {
       setErrorMessage("Please enter your full address.");
       return false;
     }
+    // Validate Aadhaar / PAN for Event / Party donors
+    if (role === "business" && businessType === "PARTY") {
+      const id = registrationNumber.trim();
+      if (!id) {
+        setErrorMessage("Please enter your Aadhaar or PAN card number for identity verification.");
+        return false;
+      }
+      const aadhaarRegex = /^\d{4}\s?\d{4}\s?\d{4}$/;
+      const panRegex = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+      if (!aadhaarRegex.test(id) && !panRegex.test(id)) {
+        setErrorMessage("Please enter a valid 12-digit Aadhaar number or 10-character PAN number.");
+        return false;
+      }
+    }
     return true;
   };
 
@@ -112,7 +127,6 @@ const SignupPage = () => {
         location: { address },
         ...(role === "recipient" && { recipientType, registrationNumber }),
         ...(role === "business" && { businessType, registrationNumber, eventCardImage }),
-        ...(role === "business" && { businessType, registrationNumber, eventCardImage })
       });
       // Redirect to specific portal
       navigate(
@@ -171,12 +185,26 @@ const SignupPage = () => {
     }
   };
 
+  // Derived label/placeholder/icon for the Name field based on role + businessType
+  const isParty = role === "business" && businessType === "PARTY";
+  const nameLabel = isParty
+    ? "Event Host / Organizer Name"
+    : role === "business"
+    ? "Business / Kitchen Name"
+    : "Organization / NGO Name";
+  const namePlaceholder = isParty
+    ? "e.g. Rahul Sharma / Sharma Family Wedding"
+    : role === "business"
+    ? "Radisson Blu Noida"
+    : "Hope Care Foundation";
+  const nameIcon = isParty ? User : role === "business" ? Building2 : User;
+
   return (
     <div className="max-w-lg mx-auto px-4 py-12 page-enter">
       <Card variant="default" className="shadow-soft-xl border-charcoal-200 hover-3d-mild">
         <Card.Header className="text-center">
           <Card.Title className="text-2xl sm:text-3xl font-extrabold text-charcoal-900 tracking-tight">
-            Join RePlate
+            Join Annapravah
           </Card.Title>
           <Card.Description className="mt-1">
             "Good food deserves another plate."
@@ -231,11 +259,11 @@ const SignupPage = () => {
               </label>
               <div className="flex gap-4">
                 <label className="flex items-center gap-2 cursor-pointer">
-                  <input type="radio" name="businessType" value="RESTAURANT" checked={businessType === 'RESTAURANT'} onChange={(e) => setBusinessType(e.target.value)} className="accent-emerald-600 w-4 h-4" />
+                  <input type="radio" name="businessType" value="RESTAURANT" checked={businessType === 'RESTAURANT'} onChange={(e) => { setBusinessType(e.target.value); setRegistrationNumber(""); }} className="accent-emerald-600 w-4 h-4" />
                   <span className="text-sm font-semibold text-charcoal-900">Restaurant / Hotel</span>
                 </label>
                 <label className="flex items-center gap-2 cursor-pointer">
-                  <input type="radio" name="businessType" value="PARTY" checked={businessType === 'PARTY'} onChange={(e) => setBusinessType(e.target.value)} className="accent-emerald-600 w-4 h-4" />
+                  <input type="radio" name="businessType" value="PARTY" checked={businessType === 'PARTY'} onChange={(e) => { setBusinessType(e.target.value); setRegistrationNumber(""); }} className="accent-emerald-600 w-4 h-4" />
                   <span className="text-sm font-semibold text-charcoal-900">Event / Party</span>
                 </label>
               </div>
@@ -291,18 +319,33 @@ const SignupPage = () => {
           )}
 
           {/* Dynamic Business Inputs */}
-            {role === 'business' && (
-              <div className="space-y-4 mb-4">
-                {businessType === 'RESTAURANT' ? (
+          {role === 'business' && (
+            <div className="space-y-4 mb-4">
+              {businessType === 'RESTAURANT' ? (
+                <Input
+                  label="Official Registration / FSSAI Number"
+                  type="text"
+                  placeholder="e.g. 12345678901234"
+                  value={registrationNumber}
+                  onChange={(e) => setRegistrationNumber(e.target.value)}
+                  required
+                />
+              ) : (
+                <>
+                  {/* Aadhaar / PAN field for Event / Party */}
                   <Input
-                    label="Official Registration / FSSAI Number"
+                    label="Identity Verification (Aadhaar Card or PAN Card Number)"
                     type="text"
-                    placeholder="e.g. 12345678901234"
+                    placeholder="e.g. 12-digit Aadhaar (XXXX XXXX XXXX) or 10-digit PAN (ABCDE1234F)"
+                    iconLeft={CreditCard}
                     value={registrationNumber}
-                    onChange={(e) => setRegistrationNumber(e.target.value)}
+                    onChange={(e) => {
+                      // Auto-uppercase and trim leading spaces (covers PAN format)
+                      setRegistrationNumber(e.target.value.trimStart().toUpperCase());
+                    }}
                     required
                   />
-                ) : (
+                  {/* Event Invitation Card upload */}
                   <div>
                     <label className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-2">
                       Event Invitation Card (Proof of Event)
@@ -312,25 +355,19 @@ const SignupPage = () => {
                       onUploadSuccess={(url) => setEventCardImage(url)}
                     />
                   </div>
-                )}
-              </div>
-            )}
+                </>
+              )}
+            </div>
+          )}
 
-            {/* Signup Form */}
+          {/* Signup Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Name field — adapts label/placeholder/icon for Event / Party */}
             <Input
-              label={
-                role === "business"
-                  ? "Business / Kitchen Name"
-                  : "Organization / NGO Name"
-              }
+              label={nameLabel}
               type="text"
-              placeholder={
-                role === "business"
-                  ? "Radisson Blu Noida"
-                  : "Hope Care Foundation"
-              }
-              iconLeft={role === "business" ? Building2 : User}
+              placeholder={namePlaceholder}
+              iconLeft={nameIcon}
               value={name}
               onChange={(e) => setName(e.target.value)}
               required

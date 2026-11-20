@@ -1,4 +1,4 @@
-const RecipientProfile = require("../models/RecipientProfile");
+﻿const RecipientProfile = require("../models/RecipientProfile");
 const User = require("../models/User");
 
 const getAuthenticatedRecipientUser = async (req, res) => {
@@ -13,7 +13,7 @@ const getAuthenticatedRecipientUser = async (req, res) => {
   if (!mongoUser) {
     mongoUser = await User.create({
       firebaseUid,
-      email: req.user.email || "recipient@replate.org",
+      email: req.user.email || "recipient@annapravah.org",
       name: req.user.name || "Recipient Partner",
       role: "RECIPIENT",
     });

@@ -1,4 +1,4 @@
-const ImpactLedger = require("../models/ImpactLedger");
+﻿const ImpactLedger = require("../models/ImpactLedger");
 const User = require("../models/User");
 const SystemSettings = require("../models/SystemSettings");
 
@@ -6,7 +6,7 @@ const SystemSettings = require("../models/SystemSettings");
 const DEFAULT_THRESHOLDS = {
   COMMUNITY_PARTNER: 100,
   FOOD_RESCUE_PARTNER: 500,
-  REPLATE_CHAMPION: 1000,
+  ANNAPRAVAH_CHAMPION: 1000,
 };
 
 const getThresholds = async () => {
@@ -19,7 +19,7 @@ const getThresholds = async () => {
 };
 
 const determineRewardLevel = (credits, thresholds) => {
-  if (credits >= thresholds.REPLATE_CHAMPION) return "REPLATE_CHAMPION";
+  if (credits >= thresholds.ANNAPRAVAH_CHAMPION) return "ANNAPRAVAH_CHAMPION";
   if (credits >= thresholds.FOOD_RESCUE_PARTNER) return "FOOD_RESCUE_PARTNER";
   if (credits >= thresholds.COMMUNITY_PARTNER) return "COMMUNITY_PARTNER";
   return "NEW";

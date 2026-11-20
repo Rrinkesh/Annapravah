@@ -6,7 +6,7 @@ const HowItWorksPage = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <PageHeader
-        title="How RePlate Works"
+        title="How Annapravah Works"
         subtitle="A streamlined 4-step food surplus management system connecting donors and verified recipients in Noida & Delhi NCR."
       />
 

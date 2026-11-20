@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import {
   User,
   Mail,
@@ -70,7 +70,7 @@ const ProfilePage = () => {
                 p.businessName ||
                 mongoUser?.organizationName ||
                 "Commercial Kitchen",
-              email: currentUser?.email || "partner@replate.org",
+              email: currentUser?.email || "partner@annapravah.org",
               phone: p.phone || mongoUser?.phone || "+91 98102 34567",
               type: p.businessType || "RESTAURANT",
               description:
@@ -96,7 +96,7 @@ const ProfilePage = () => {
                 p.organizationName ||
                 mongoUser?.organizationName ||
                 "Grace Care Shelter",
-              email: currentUser?.email || "shelter@replate.org",
+              email: currentUser?.email || "shelter@annapravah.org",
               phone: p.phone || mongoUser?.phone || "+91 98765 43210",
               type: p.recipientType || "NGO",
               description:
@@ -119,8 +119,8 @@ const ProfilePage = () => {
             name:
               currentUser?.displayName ||
               mongoUser?.name ||
-              "RePlate Super Admin",
-            email: currentUser?.email || "admin@replate.org",
+              "Annapravah Super Admin",
+            email: currentUser?.email || "admin@annapravah.org",
             phone: "+91 99999 00000",
             type: "SUPER_ADMIN",
             description:
@@ -148,7 +148,7 @@ const ProfilePage = () => {
             (userRole === "business"
               ? "Verified Business Partner"
               : "Verified Recipient"),
-          email: currentUser?.email || "partner@replate.org",
+          email: currentUser?.email || "partner@annapravah.org",
           phone: "+91 98102 34567",
           type:
             userRole === "business"
@@ -265,7 +265,7 @@ const ProfilePage = () => {
       {/* Page Header */}
       <PageHeader
         title={`${userRole === "business" ? "Business Partner" : userRole === "recipient" ? "Recipient Organization" : "Admin"} Profile`}
-        subtitle="Manage your RePlate account identity, contact details, and organization verification status."
+        subtitle="Manage your Annapravah account identity, contact details, and organization verification status."
         actions={
           userRole !== "admin" && (
             <Button

@@ -21,7 +21,7 @@ const Footer = () => {
             <Logo size="lg" className="[&_span]:text-white" />
 
             <p className="text-charcoal-400 text-sm max-w-sm leading-relaxed">
-              RePlate is a food-surplus management and recovery platform
+              Annapravah is a food-surplus management and recovery platform
               connecting hotels, restaurants, cafés, bakeries, cloud kitchens,
               and verified recipient NGOs across Noida & Delhi NCR.
             </p>
@@ -112,7 +112,7 @@ const Footer = () => {
                   to="/about"
                   className="hover:text-brand-400 transition-colors"
                 >
-                  About RePlate
+                  About Annapravah
                 </Link>
               </li>
               <li>
@@ -175,7 +175,7 @@ const Footer = () => {
         {/* Bottom Copyright Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-charcoal-500">
           <p>
-            © {new Date().getFullYear()} RePlate Platform. All rights reserved.
+            © {new Date().getFullYear()} Annapravah Platform. All rights reserved.
           </p>
           <p className="flex items-center gap-1">
             Built with{" "}

@@ -1,4 +1,4 @@
-const BusinessProfile = require("../models/BusinessProfile");
+﻿const BusinessProfile = require("../models/BusinessProfile");
 const User = require("../models/User");
 
 const getAuthenticatedBusinessUser = async (req, res) => {
@@ -13,7 +13,7 @@ const getAuthenticatedBusinessUser = async (req, res) => {
   if (!mongoUser) {
     mongoUser = await User.create({
       firebaseUid,
-      email: req.user.email || "business@replate.org",
+      email: req.user.email || "business@annapravah.org",
       name: req.user.name || "Business Partner",
       role: "BUSINESS",
     });
